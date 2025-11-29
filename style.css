@@ -1,0 +1,248 @@
+/* -------------------------------------------------
+   GLOBAL SETTINGS
+---------------------------------------------------*/
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 40px;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background: var(--dark);
+    color: var(--light);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+:root {
+    --dark: #0f0f0f;
+    --light: #f7f7f7;
+    --accent: #ffffff;
+}
+
+/* -------------------------------------------------
+   NAVBAR & FOOTER
+---------------------------------------------------*/
+.navbar,
+.footer {
+    background: #000;
+}
+
+.navbar-brand {
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+
+.logo {
+    height: 45px;
+    width: auto;
+}
+
+/* -------------------------------------------------
+   HERO SECTION
+---------------------------------------------------*/
+.hero {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 120px;
+    padding-bottom: 60px;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.08), transparent 55%);
+    animation: pulse 8s infinite alternate;
+    pointer-events: none;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+}
+
+/* Hero BG pulse animation */
+@keyframes pulse {
+    from {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    to {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* -------------------------------------------------
+   REUSABLE SECTION TITLES
+---------------------------------------------------*/
+.section-title {
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #ccc;
+}
+
+/* -------------------------------------------------
+   CARDS (Services / Leadership)
+---------------------------------------------------*/
+.card {
+    background: #111;
+    border: 1px solid #222;
+    color: var(--light);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.card img {
+    object-fit: cover;
+    height: 220px;
+    filter: grayscale(100%);
+}
+
+/* -------------------------------------------------
+   CONTACT LINKS + CTA FORM
+---------------------------------------------------*/
+.contact-link {
+    color: var(--accent);
+}
+
+.contact-link:hover {
+    color: #bbb;
+}
+
+.cta-form input,
+.cta-form textarea {
+    background: #0b0b0b;
+    border: 1px solid #222;
+    color: var(--light);
+}
+
+.cta-form input:focus,
+.cta-form textarea:focus {
+    outline: none;
+    border-color: #fff;
+    box-shadow: none;
+}
+
+.btn-outline-light {
+    border-width: 2px;
+}
+
+/* -------------------------------------------------
+   ANIMATIONS
+---------------------------------------------------*/
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation delays */
+.delay-01 {
+    animation-delay: 0.1s;
+}
+
+.delay-02 {
+    animation-delay: 0.2s;
+}
+
+.delay-03 {
+    animation-delay: 0.3s;
+}
+
+.delay-04 {
+    animation-delay: 0.1s;
+}
+
+.delay-05 {
+    animation-delay: 0.2s;
+}
+
+.delay-06 {
+    animation-delay: 0.3s;
+}
+
+.delay-07 {
+    animation-delay: 0.2s;
+}
+
+.delay-08 {
+    animation-delay: 0.3s;
+}
+
+.phone-copy-anime {
+    z-index: 1080;
+}
+
+/* -------------------------------------------------
+   RESPONSIVE DESIGN
+---------------------------------------------------*/
+
+/* 992px and below */
+@media (max-width: 992px) {
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+}
+
+/* 400px and below */
+@media (max-width: 400px) {
+    .navbar-brand {
+        font-size: 0.98rem;
+    }
+
+    .navbar-toggler {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .navbar {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}
+
+/* Desktop large screens */
+@media (min-width: 992px) {
+    .hero {
+        min-height: 100vh;
+        padding-top: 190px;
+        padding-bottom: 80px;
+    }
+}
+
+/* Mobile hero text sizing */
+@media (max-width: 576px) {
+    .hero {
+        padding-top: 140px;
+        padding-bottom: 40px;
+    }
+
+    .hero h1 {
+        font-size: clamp(1.5rem, 6vw, 2.2rem);
+    }
+}
