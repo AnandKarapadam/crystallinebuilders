@@ -2,14 +2,29 @@
 emailjs.init("-ZXim7GAqQMk64Fb9");
 
 function sendMail() {
+  // Get field values
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const company = document.getElementById("company").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  // Validation check
+  if (!name || !email || !company || !phone || !message) {
+    alert("Please fill out all required fields before submitting.");
+    return; // stop the function — email will NOT send
+  }
+
+  // Prepare data
   let params = {
-    name: document.getElementById("name").value.toUpperCase(),
-    email: document.getElementById("email").value,
-    company: document.getElementById("company").value,
-    phone: document.getElementById("phone").value,
-    message: document.getElementById("message").value,
+    name: name.toUpperCase(),
+    email: email,
+    company: company,
+    phone: phone,
+    message: message,
   };
 
+  // Send email
   emailjs
     .send("service_ay516vs", "template_k5kp2qx", params)
     .then(() => {
@@ -21,6 +36,7 @@ function sendMail() {
       alert("Failed to send message. Please try again.");
     });
 }
+
 
 // Auto-close navbar on link click (mobile)
 document.querySelectorAll(".navbar-nav .nav-link").forEach((link) => {
@@ -64,3 +80,4 @@ window.addEventListener("resize", () => {
     });
   }
 });
+
