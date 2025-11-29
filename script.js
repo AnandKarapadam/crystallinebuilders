@@ -1,3 +1,16 @@
+//Custom Alert//
+function showAlert(message, type = "error") {
+  const alertBox = document.getElementById("formAlert");
+
+  alertBox.textContent = message;
+  alertBox.className = "custom-alert " + (type === "success" ? "success" : "");
+
+  // Show
+  setTimeout(() => alertBox.classList.add("show"), 10);
+
+  // Hide after 2.5s
+  setTimeout(() => alertBox.classList.remove("show"), 2500);
+}
 //FORM SUBMISSION//
 emailjs.init("-ZXim7GAqQMk64Fb9");
 
@@ -11,7 +24,7 @@ function sendMail() {
 
   // Validation check
   if (!name || !email || !company || !phone || !message) {
-    alert("Please fill out all required fields before submitting.");
+    showAlert("Please fill out all required fields.");
     return; // stop the function — email will NOT send
   }
 
@@ -28,12 +41,12 @@ function sendMail() {
   emailjs
     .send("service_ay516vs", "template_k5kp2qx", params)
     .then(() => {
-      alert("Your message has been sent!");
+      showAlert("Your message has been sent!", "success");
       document.querySelector(".cta-form").reset();
     })
     .catch((error) => {
       console.error("EmailJS Error:", error);
-      alert("Failed to send message. Please try again.");
+      showAlert("Failed to send message. Please try again.");
     });
 }
 
@@ -80,4 +93,5 @@ window.addEventListener("resize", () => {
     });
   }
 });
+
 
